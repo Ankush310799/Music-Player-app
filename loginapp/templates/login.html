@@ -1,0 +1,28 @@
+
+<html>
+     <body style="background:#008080;">
+          <center><h4>User Login</h4></center>
+          <center><form action="logintask"  >
+          {% csrf_token %}
+          <table>
+          <tr>
+              <td>User Name  </td>
+              <td><input type="email"  name="Email"><br></td>
+            
+          </tr>
+          <tr>     
+             <td>Password    </td>
+             <td><input type="password" name="Password"><br></td>
+          </tr>
+          <tr>
+              <td><input type="submit" value="Login"></td>
+          </tr>
+          <tr>
+              <td><a href="Regi">New User</td>
+          </tr>
+      
+      </table>
+      </form></center>
+          
+      </body>
+</html>

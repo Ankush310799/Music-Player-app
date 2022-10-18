@@ -1,0 +1,24 @@
+
+<html>
+     <body>
+          <form>{% csrf_token %}
+        email=req.GET.get("Email")
+        password=req.GET.get("Password")
+        
+        conn =              mysql.connect(host="localhost",user="root",password="welcome123@",database="music")
+        cr= conn.cursor()
+        cr.execute("select * from uservalues")
+        
+        
+        while True:
+            row=cr.fetchone()
+            print(row)
+            
+            if row is None:
+                 break;
+            elif row[1]==email and row[2]==password:
+                 return  redirect('/msg')
+        return redirect("/login")
+           </form>
+      </body>
+</html>
