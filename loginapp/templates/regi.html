@@ -1,0 +1,157 @@
+<html>
+    <script>
+        function Regi()
+           {
+            nm=document.getElementById("name").value;
+            em=document.getElementById("em").value;
+            pass=document.getElementById("pass").value;
+            rpass=document.getElementById("rpass").value;
+            mn=document.getElementById("mn").value;
+           
+            err1=document.getElementById("err1");
+            err2=document.getElementById("err2");
+            err3=document.getElementById("err3");
+            err4=document.getElementById("err4");
+            err5=document.getElementById("err5");
+           
+            if (nm.length==0)
+            {
+               err1.innerHTML="*Enter Name....!"
+                err1.style.color="Red";
+            }
+            if (em.length==0)
+            {
+               err2.innerHTML="*Enter Email...."
+                err2.style.color="Red";
+            }
+            if (pass.length==0)
+            {
+               err3.innerHTML="*Enter password"
+                err3.style.color="Red";
+            }
+            if (mn.length==0 )
+            {
+               err4.innerHTML="*Enter Mobile Number !"
+                err4.style.color="Red";
+            }
+            if (rpass.length==0 )
+            {
+               err5.innerHTML="*Enter same password !"
+                err5.style.color="Red";
+            }
+           
+           }
+           function Name()
+           {
+            nm=document.getElementById("name").value;
+            err1=document.getElementById("err1");
+           
+             if(nm.length==0 || nm.length<15)
+             {
+                err1.innerHTML="*please Enter valid Name"
+                err1.style.color="Red";
+             }
+             else{err1.innerHTML="";}
+           
+           }
+             function email()
+             {
+               em=document.getElementById("em").value;
+               err2=document.getElementById("err2");
+               
+               if(em.length==0)
+              {
+                err2.innerHTML="*please Enter valid email "
+                err2.style.color="Red";
+              }
+               
+                else{err2.innerHTML="";}
+             }
+             
+              function password()
+              {
+                pass=document.getElementById("pass").value;
+                err3=document.getElementById("err3");
+               
+                if(pass.length==0 || pass.length<=8)
+                {
+                err3.innerHTML="*Please Enter Password at least 8 chara."
+                err3.style.color="Red";
+                }
+                else{err3.innerHTML="";}
+               }
+               
+                function rpassword()
+                {
+                rpass=document.getElementById("rpass").value;
+                err5=document.getElementById("err5");
+               
+                if(rpass.length==0 || rpass.length<=8)
+                {
+                err5.innerHTML="*Please Enter Password at least 8 chara."
+                err5.style.color="Red";
+                }
+                else if(pass!=rpass)
+                {
+                    err5.innerHTML="*Please Enter same Password"
+                    err5.style.color="Red";
+                }
+                else{err5.innerHTML="";}
+                }
+               
+                function mobile()
+                {
+                  mn=document.getElementById("mn").value;
+                  err4=document.getElementById("err4");  
+               
+                 if(mn.length==0 || mn.length>10 || mn.length<=9 || isNaN(mn))
+                 {
+                  err4.innerHTML="*Please Enter valid mobile no..!"
+                  err4.style.color="Red";
+                 }
+                 else{err4.innerHTML="";}
+                }
+     
+    </script>
+   
+   
+<body style="background-image:url('https://media.istockphoto.com/photos/festive-bokeh-glowing-background-picture-id1093621710?b=1&k=20&m=1093621710&s=170667a&w=0&h=rkZ090wSmguws5ngJICwPGeD7L3nznNbrAz0TImw94s=');background-repeat:no-repeat;background-size:cover;">
+              <center><h3>Registration Form</h3></center>
+    
+    <center><form action="insert" style="background-image:url('https://media.istockphoto.com/photos/festive-bokeh-glowing-background-picture-id1093621710?b=1&k=20&m=1093621710&s=170667a&w=0&h=rkZ090wSmguws5ngJICwPGeD7L3nznNbrAz0TImw94s=');background-repeat:no-repeat;background-size:cover;">
+         {% csrf_token %}
+        <table border="0.1" cellpadding="25"   allign="center" >
+          <tr>
+             <td><center>Enter Name :</center></td>
+             <td><input type="text" id="name" name="name" onkeyup="Name()"></td>
+             <td><span input value="text" id="err1"></span></td>
+          </tr>  
+          <tr>
+              <td><center>Enter Email :</center></td>
+              <td><input type="text" id="em" name="Email" onkeyup="email()"></td>
+              <td><span input value="text" id="err2"></span></td>
+          </tr>  
+          <tr>
+              <td><center>Enter Password :</center></td>
+              <td><input type="text" id="pass" name="Password" onkeyup="password()"></td>
+              <td><span input value="text" id="err3"></span></td>
+          </tr>  
+          <tr>
+              <td><center>Re-Enter Password :</center></td>
+              <td><input type="text" id="rpass" name="RePassword" onkeyup="rpassword()"></td>
+              <td><span input value="text" id="err5"></span></td>
+          </tr>  
+          <tr>
+              <td><center>Mobile Number :</center></td>
+              <td><input type="text" id="mn" name="Mobile" onkeyup="mobile()"></td>
+              <td><span input value="text" id="err4"></span></td>
+          </tr>  
+          <tr>
+              <td><center><input type="Submit" value="Registration" onclick="Regi()"></center></td>
+              <td><span input value="text" id="err"></span></td>
+          </tr>
+
+        </table>
+</form></center>
+</body>
+</html>

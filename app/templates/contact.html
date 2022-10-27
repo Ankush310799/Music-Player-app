@@ -1,0 +1,106 @@
+<html>
+    <script>
+        function Contact()
+           {
+            nm=document.getElementById("name").value;
+            em=document.getElementById("em").value;
+            msg=document.getElementById("msg").value;
+            
+            err=document.getElementById("err");
+            err1=document.getElementById("err1");
+            err2=document.getElementById("err2");
+            err3=document.getElementById("err3");
+           
+            if (nm.length==0)
+            {
+               err1.innerHTML="*Enter Your Name.."
+                err1.style.color="Red";
+            }
+            if (em.length==0)
+            {
+               err2.innerHTML="*Enter Email...."
+                err2.style.color="Red";
+            }
+            if (msg.length==0)
+            {
+               err3.innerHTML="*Enter Message....."
+                err3.style.color="Red";
+            }
+            }
+            
+           function Name()
+           {
+            nm=document.getElementById("name").value;
+            err1=document.getElementById("err1");
+           
+             if(nm.length==0 )
+             {
+                err1.innerHTML="*please Enter Your Name"
+                err1.style.color="Red";
+             }
+             else{err1.innerHTML="";}
+           
+           }
+             function email()
+             {
+               em=document.getElementById("em").value;
+               err2=document.getElementById("err2");
+               
+               if(em.length==0)
+              {
+                err2.innerHTML="*Please Enter Your Email-Id "
+                err2.style.color="Red";
+              }
+               
+                else{err2.innerHTML="";}
+             }
+             
+              function message()
+              {
+                msg=document.getElementById("msg").value;
+                err3=document.getElementById("err3");
+               
+                if(msg.length==0 )
+                {
+                err3.innerHTML="*Comment"
+                err3.style.color="Red";
+                }
+                else{err3.innerHTML="";}
+               }
+               
+               
+    </script>
+   
+   
+<body style="background-image:url('https://img.freepik.com/free-photo/wall-blank-paper-frame-with-acorn-decoration_53876-105706.jpg?w=2000');background-repeat:no-repeat;background-size:cover;">
+              <h5><a href='home'> < Back To Home</a></h5>
+              <center><h3>Contact Us</h3></center>
+    
+    <center><form action="contact_insert" style="https://img.freepik.com/free-photo/wall-blank-paper-frame-with-acorn-decoration_53876-105706.jpg?w=2000');background-repeat:no-repeat;background-size:cover;">
+         {% csrf_token %}
+        <table border="0.1" cellpadding="25"   allign="center" >
+          <tr>
+             <td><center> Name :</center></td>
+             <td><input type="text" id="name" name="name" Placeholder="Enter Your Name"onkeyup="Name()"></td>
+             <td><span input value="text" id="err1"></span></td>
+          </tr>  
+          <tr>
+              <td><center>Email :</center></td>
+              <td><input type="text" id="em" name="Email" Placeholder="Enter Email-Id " onkeyup="email()"></td>
+              <td><span input value="text" id="err2"></span></td>
+          </tr>  
+          <tr>
+              <td><center>Message :</center></td>
+              <td><input type="text" id="msg" name="Message" Placeholder="Drop message here "  onkeyup="message()"></td>
+              <td><span input value="text" id="err3"></span></td>
+          </tr>  
+          
+          <tr>
+              <td><center><input type="Submit" value="Submit" onclick="Contact()"></center></td>
+              <td><span input value="text" id="err"></span></td>
+          </tr>
+
+        </table>
+</form></center>
+</body>
+</html>

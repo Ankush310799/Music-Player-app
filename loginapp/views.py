@@ -9,42 +9,7 @@ def  login(req):
 
 
 def  Regi(req):
-      return HttpResponse("""
-      
-      <center><h4>New Registration</h4></center>
-      <body style="background:#f5f5dc;"><center><form action="insert">
-      <table>
-      <tr>
-            <td>Name </td>
-            <td><input type="text"  name="name"><br></td>
-            
-       </tr>
-       
-       <tr>
-            <td>Email</td>
-            <td><input type="email"  name="Email"><br></td>
-            
-       </tr>
-       <tr>     
-            <td>Password</td>
-            <td><input type="text" name="Password"><br></td>
-       </tr>
-       <tr>     
-            <td>Mobile Number</td>
-            <td><input type="number" name="mobile"><br></td>
-       </tr>
-       
-       
-       <tr>
-             <td><input type="submit" value="Registration"></td>
-       </tr>
-       
-      
-      </table>
-      </form></center>
-      </body>
-      
-""")
+      return render (req,'regi.html',{ })
 
 def  logintask(req):
        
@@ -53,7 +18,7 @@ def  logintask(req):
         
         conn =              mysql.connect(host="localhost",user="root",password="welcome123@",database="music")
         cr= conn.cursor()
-        cr.execute("select * from uservalues")
+        cr.execute("select * from user")
         
         
         while True:
@@ -68,21 +33,22 @@ def  logintask(req):
       
 def msg(req):
         return HttpResponse("""
-        <body style="background:#8EE8EE;">
-        <h5><a href="music/home"><-Back To Home</a></h5>
-        <center><h4>Login Successful !</h4></center>     
+        <body style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlf_K781m4pyPb1qEiur9ht8LTUC9rtE9NaKoOPS1cQvjbL_6COaEwQTJPoj6P9uka4tY&usqp=CAU');background-repeat:no-repeat;background-size:cover;">
+        <h4><a href="music/home"><-Back To Home</a></h4>
+        <center><h2>Login Successful !</h2></center>     
          </body>
          """) 
 def insert(req):
         name= req.GET.get("name")
         email= req.GET.get("Email")
         password= req.GET.get("Password")
-        numbers= req.GET.get("mobile")
+        repassword=req.GET.get("RePassword")
+        numbers= req.GET.get("Mobile")
         
 #Establish connection wd the database.
         conn =              mysql.connect(host="localhost",user="root",password="welcome123@",database="music")
         cr=conn.cursor()
-        query="insert into uservalues values('{0}','{1}','{2}',{3})".format(name,email,password,numbers) 
+        query="insert into user values('{0}','{1}','{2}','{3}',{4})".format(name,email,password,repassword,numbers) 
         cr.execute(query)
         conn.commit()
         return redirect('/login')  
